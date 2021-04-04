@@ -5,9 +5,9 @@ from .company import Company
 
 class SampleRequest(models.Model):
 
-    reg_no = models.CharField(max_length=50, unique=True)
+    reg_no = models.CharField("Request No.", max_length=50, unique=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    registration_date = models.DateField(auto_now=False, auto_now_add=False)
+    registration_date = models.DateField(null = True)
     representative = models.CharField(max_length=50)
     report_date = models.CharField(("Expected Report Date"), max_length=50)
     remarks = models.TextField()
@@ -34,8 +34,20 @@ class Sample(models.Model):
         ('JF', 'Jet Fuel'),
         ('FO', 'Furnance Oil'),
     ]
-    fuel_type = models.CharField(max_length=50, choices=FUEL_TYPE_COICES)
+    para =[
+        ('Mk', 'Marker'),
+        ('DS', 'Density'),
+        ('Qu', 'Quality'),
+        
+    ]
+    sample_request = models.ForeignKey(SampleRequest, on_delete=models.CASCADE)
+    fuel_type = models.CharField(max_length=50,choices= FUEL_TYPE_COICES)
+    parameter = models.CharField(max_length=20,choices= para)
+    type_method = models.CharField(max_length=10)
+    test_method = models.CharField(max_length=10)
+    unit_fee = models.IntegerField()
     quantity = models.IntegerField()
+    
 
     class Meta:
         verbose_name = ("Sample")

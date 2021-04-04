@@ -4,7 +4,9 @@ from django.urls import reverse
 # Create your models here.
 
 class Company(models.Model):
+    
 
+    
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=150)
     registration_no = models.CharField(max_length=50)
@@ -22,7 +24,7 @@ class Company(models.Model):
     parish = models.CharField(max_length=50)
     fax = models.CharField(max_length=50)
     tin = models.CharField(max_length=50)
-    logo = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    logo = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None,null = True,blank=True)
 
 
 
