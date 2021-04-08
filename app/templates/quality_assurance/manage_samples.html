@@ -6,7 +6,7 @@
 Manage Samples
 {% endblock%}
 {% block right_button%}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-farm">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-sample">
     New Sample
 </button>
 {% endblock %}
@@ -20,43 +20,41 @@ Manage Samples
                 {%if samples %}
                 <!-- ./ card-header -->
                 <div class="card-header">
-                    <h3 class="card-title">Sample</h3>
+                    <h3 class="card-title">Samples</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- ./card-body -->
                 <div class="card-body">
                 <!-- id="dataTables-example" class="table table-bordered table-hover" data-page-length='100' -->
-                    <table id="dataTables-example" class="table table-striped" data-page-length='100'>
+                    <table id="sample-list" class="table table-striped" data-page-length='100'>
                         <thead>
                         <tr>
-                            <th>Request No</th>
-                            <th>company</th>
-                            <th>registration date</th>
-                            <th>report date</th>
-                            <th>remarks</th>
-                            <th>representative</th>
-                            <th>Action</th>
+                            <th>Sample No</th>
+                            <th>Fuel Type</th>
+                            <th>Parameter</th>
+                            <th>Type Method</th>
+                            <th>Test Method</th>
+                            <th>Unit Fee</th>
+                            <th>Quantity</th>
                             <th>#</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for samples in samples %}
+                        {% for sample in samples %}
                         <tr>
-                            <td>{{samples.reg_no}}</td>
-                            <td>{{samples.company}}</td>
-                            <td>{{samples.registration_date}}</td>
-                            <td>{{samples.report_date}}</td>
-                            <td>{{samples.remarks}}</td>
-                            <td>{{samples.representative}}</td>
-                            <td>
-                                <button ></button>
-                            </td>
+                            <td>{{sample.id}}</td>
+                            <td>{{sample.fuel_type}}</td>
+                            <td>{{sample.parameter}}</td>
+                            <td>{{sample.type_method}}</td>
+                            <td>{{sample.test_method}}</td>
+                            <td>{{sample.unit_fee}}</td>
+                            <td>{{sample.quantity}}</td>
                             <td>
                                 <a href="" style="color:inherit">
                                     <i class="fa fa-edit"></i>
                                 </a> |
                                 <a href="" style="color: inherit">
-                                    <i class="fa fa-trash" onclick="return 'Do you want to delete {{Request_sample_view.id}}?'"></i>
+                                    <i class="fa fa-trash" onclick="return Comfirm('Do you want to delete {{sample.id}}?')"></i>
                                 </a>
                             <td>
                         </tr>
@@ -79,7 +77,7 @@ Manage Samples
 </div>
 <!-- /.container-fluid -->
 
-<div class="modal fade" id="modal-add-farm">
+<div class="modal fade" id="modal-add-sample">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

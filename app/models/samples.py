@@ -5,6 +5,8 @@ from .company import Company
 
 class SampleRequest(models.Model):
 
+    id = models.AutoField(primary_key=True)
+
     reg_no = models.CharField("Request No.", max_length=50, unique=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     registration_date = models.DateField(null = True)
@@ -18,13 +20,14 @@ class SampleRequest(models.Model):
         verbose_name_plural = ("SampleRequests")
 
     def __str__(self):
-        return self.name
+        return self.reg_no
 
     def get_absolute_url(self):
         return reverse("SampleRequest_detail", kwargs={"pk": self.pk})
 
 
 class Sample(models.Model):
+    id = models.AutoField(primary_key=True)
 
     FUEL_TYPE_COICES =[
         ('GS', 'PMS(Gasoline)'),
@@ -38,7 +41,6 @@ class Sample(models.Model):
         ('Mk', 'Marker'),
         ('DS', 'Density'),
         ('Qu', 'Quality'),
-        
     ]
     sample_request = models.ForeignKey(SampleRequest, on_delete=models.CASCADE)
     fuel_type = models.CharField(max_length=50,choices= FUEL_TYPE_COICES)
@@ -52,9 +54,11 @@ class Sample(models.Model):
     class Meta:
         verbose_name = ("Sample")
         verbose_name_plural = ("Samples")
+        
+        unique_together=[("sample_request", "fuel_type")]
 
     def __str__(self):
-        return self.name
+        return {self.fuel_type}
 
     def get_absolute_url(self):
         return reverse("Sample_detail", kwargs={"pk": self.pk})

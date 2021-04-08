@@ -6,7 +6,7 @@ from django.urls import reverse
 class Company(models.Model):
     
 
-    
+    id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=150)
     registration_no = models.CharField(max_length=50)
