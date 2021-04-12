@@ -21,7 +21,10 @@ company_urls = [
 sample_urls = [
     path('manage_sample_requests/', sample_views.manage_sample_requests, name='request_sample'),
     
-    path('manage_samples/<int:sample_request_id>/', sample_views.manage_samples, name='manage_sample'),
+    path('manage_samples/<int:sample_request_id>/',
+         sample_views.manage_samples, name='manage_sample'),
+    path('view_request_details/<int:sample_request_id>/',
+         sample_views.request_details_view, name='view_request_details'),
     
 ]
 

@@ -30,28 +30,28 @@ Manage Company
                         <thead>
                         <tr>
     
-                            <th>ID</th>
-                            <th>code</th>
-                            <th>name</th>
-                            <th>reg Number</th>
-                            <th>Contact person</th>
-                            <th>Contact Number</th>
-                            <th>Email</th>
-                            <th>Tin</th>
-                            <th>#</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">reg Number</th>
+                            <th class="text-center">Contact Person</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Actions</th>
+                            <th class="text-center">#</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for companys in companys %}
                         <tr data-id={{companys.id}}>
-                            <td>{{companys.id}}</td>
-                            <td>{{companys.code}}</td>
-                            <td>{{companys.name}}</td>
-                            <td>{{companys.registration_no}}</td>
-                            <td>{{companys.contact_person}}</td>
-                            <td>{{companys.contact_no}}</td>
-                            <td>{{companys.email}}</td>
-                             <td>{{companys.tin}}</td>
+                            <td class="text-center">{{companys.id}}</td>
+                            <td class="text-center">{{companys.code}} - <br>({{companys.name}})</td>
+                            <td class="text-center">{{companys.registration_no}}</td>
+                            <td class="text-center">{{companys.contact_person}} <br> ({{companys.contact_no}})</td>
+                            <td class="text-center">{{companys.email}}</td>
+                             <td>
+                                <a class="btn btn-primary" href="">
+                                    NEMA Cetificates
+                                </a>
+                             </td>
                             <td>
                                 
                                 <a href="{% url 'edit_company_view' companys.id %}" style="color:inherit">

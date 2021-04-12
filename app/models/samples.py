@@ -30,7 +30,7 @@ class Sample(models.Model):
     id = models.AutoField(primary_key=True)
 
     FUEL_TYPE_COICES =[
-        ('GS', 'PMS(Gasoline)'),
+        ('PMS(Gasoline)', 'PMS(Gasoline)'),
         ('DS', 'AGO(Diesel)'),
         ('KS', 'BIK(Keresone)'),
         ('EO', 'Engine Oil'),
@@ -48,7 +48,7 @@ class Sample(models.Model):
     type_method = models.CharField(max_length=10)
     test_method = models.CharField(max_length=10)
     unit_fee = models.IntegerField()
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(verbose_name="Quantity(mls)")
     
 
     class Meta:
@@ -59,6 +59,12 @@ class Sample(models.Model):
 
     def __str__(self):
         return {self.fuel_type}
+
+    @property
+    def total_cost(self):
+        total_cost=self.unit_fee*self.quantity
+
+        return total_cost
 
     def get_absolute_url(self):
         return reverse("Sample_detail", kwargs={"pk": self.pk})

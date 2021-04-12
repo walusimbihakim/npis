@@ -65,6 +65,16 @@ def manage_samples(request, sample_request_id):
     return render(request, "quality_assurance/manage_samples.html", context)
 
 
+def request_details_view(request, sample_request_id):
+    sample_request = get_sample_request(sample_request_id)
+
+    samples = get_samples_on_request(sample_request)
+
+    context = {
+        "request":sample_request,
+        "samples": samples,
+    }
+    return render(request, "quality_assurance/sample_request_details.html", context)
 
     
     

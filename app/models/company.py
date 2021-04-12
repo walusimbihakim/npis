@@ -37,3 +37,20 @@ class Company(models.Model):
 
     def get_absolute_url(self):
         return reverse("Company_detail", kwargs={"pk": self.pk})
+
+class NemaCertifcate(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    certificate_no = models.CharField(max_length=25, verbose_name="NEMA Certificate No.")
+    create_date = models.DateField()
+    audit_due_date = models.DateField()
+    project = models.CharField(max_length=50)
+    project_purpose = models.TextField()
+    received_date = models.DateField()
+    certifcate_one=models.FileField()
+    certifcate_two = models.FileField()
+    certifcate_three = models.FileField()
+    status = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.certificate_no
+
