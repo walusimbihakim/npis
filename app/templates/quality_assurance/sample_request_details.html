@@ -1,0 +1,176 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%load humanize%}
+
+{%block page_title%}
+Manage Samples Request
+{% endblock%}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- ./row -->
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-12">
+            <div class="card">
+                <!-- ./ card-header -->
+                <!-- <div class="card-header">
+                    <h3 class="card-title">Sample</h3>
+                </div> -->
+                <!-- /.card-header -->
+                <!-- ./card-body -->
+                <div class="card-body">
+                    <a class="btn btn-primary" href="{% url 'sample_print' request.id %}">
+                        print
+                    </a>
+                <h3 class="text-center">SAMPLE REQUEST: <b>{{request.reg_no}}</b></h3>
+                
+                <h4>Record Ref: HR/FM/006 | Issue/Rev: 1/0</h4>
+                    <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                        <tbody>
+                            <tr>
+                                <th >Company</th>
+                                <td >
+                                    {{request.company}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Request Date</th>
+                                <td>{{request.registration_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>Report date</th>
+                                <td>{{request.report_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>Remarks</th>
+                                <td>{{request.remarks}}</td>
+                            </tr>   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div  class="card-body">
+
+                    {%if samples %}
+                    <table id="sample-list" class="table table-small">
+                        <thead>
+                            <tr>
+                                <th>Sample No</th>
+                                <th>Fuel Type</th>
+                                <th>Parameter</th>
+                                <th>Type Method</th>
+                                <th>Test Method</th>
+                                <th>Unit Fee</th>
+                                <th>Quantity</th>
+                                <th>Total Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sample in samples %}
+                            <tr>
+                                <td>{{sample.id}}</td>
+                                <td>{{sample.fuel_type}}</td>
+                                <td>{{sample.parameter}}</td>
+                                <td>{{sample.type_method}}</td>
+                                <td>{{sample.test_method}}</td>
+                                <td>{{sample.unit_fee|intcomma}}/-</td>
+                                <td>{{sample.quantity}}</td>
+                                <td>{{sample.total_cost|intcomma}}/-</td>                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {%else%}
+                    <h4>No Samples available</h4>
+                    {%endif%}
+                </div>
+                <!-- /.card-body -->               
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+<div class="modal fade" id="modal-add-farm">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Request</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ request_form|crispy }}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Confirm Submit -->
+<div class="modal fade" id="modal-confirm-submit">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Submit</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to submit this Wagesheet?
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+                <button type="submit" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- DataTables -->
+<!-- <script src="{% static 'plugins/datatables/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js'%}"></script> -->
+
+<!-- page script -->
+<script>
+
+//   $(function () {
+//     $("#example1").DataTable({
+//       "responsive": true,
+//       "autoWidth": false,
+//     });
+//     $('#example2').DataTable({
+//       "paging": true,
+//       "lengthChange": false,
+//       "searching": false,
+//       "ordering": true,
+//       "info": true,
+//       "autoWidth": false,
+//       "responsive": true,
+//     });
+//   });
+// </script>
+{% endblock content %}
