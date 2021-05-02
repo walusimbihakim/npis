@@ -48,8 +48,8 @@ Manage Company
                             <td class="text-center">{{companys.contact_person}} <br> ({{companys.contact_no}})</td>
                             <td class="text-center">{{companys.email}}</td>
                              <td>
-                                <a class="btn btn-primary" href="">
-                                    NEMA Cetificates
+                                <a class="btn btn-primary" href="{% url 'Detail_company' companys.id %}">
+                                    Details
                                 </a>
                              </td>
                             <td>

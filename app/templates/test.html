@@ -1,0 +1,76 @@
+
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>{{request.reg_no}} </p>
+            </div>
+        <div>
+        <div class='details'>
+            <h3 class="text-center">SAMPLE REQUEST: <b>{{request.reg_no}}</b></h3>
+            
+            <h4>Record Ref: HR/FM/006 | Issue/Rev: 1/0</h4>
+            <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                <tbody>
+                    <tr>
+                        <th>Company</th>
+                        <td>
+                            {{request.company}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request Date</th>
+                        <td>{{request.registration_date}}</td>
+                    </tr>
+                    <tr>
+                        <th>Report date</th>
+                        <td>{{request.report_date}}</td>
+                    </tr>
+                    <tr>
+                        <th>Remarks</th>
+                        <td>{{request.remarks}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <hr class='hrItem' />
+        </div>
+    </div>
+    </body>
+</html>

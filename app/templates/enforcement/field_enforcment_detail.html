@@ -1,0 +1,244 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%load humanize%}
+
+{%block page_title%}
+Manage Field Details
+{% endblock%}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- ./row -->
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-12">
+            <div class="card">
+                <!-- ./ card-header -->
+                <!-- <div class="card-header">
+                    <h3 class="card-title">Sample</h3>
+                </div> -->
+                <!-- /.card-header -->
+                <!-- ./card-body -->
+                {%if field_request %}
+                <div class="card-body">
+                    <a class="btn btn-primary" href="{% url 'field_print_enf' field_request.id %}">
+                        print
+                    </a>
+                    
+                <h2 class="text-center">FIELD ENFORCEMENT: <b>{{field_request.serial_number}}</b></h2>
+                
+                <h5> Company/Owner: {{field_request.company_name}} | District : {{field_request.district}} | Sub County : {{field_request.subcounty}} | Date: {{field_request.date}} </h5>
+                    <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                        <tbody>
+                            <tr>
+                                <th >Category</th>
+                                <td >
+                                    {{field_request.category}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contact</th>
+                                <td>{{field_request.contact}}</td>
+                            </tr>
+                            <tr>
+                                <th>Seal Number (s) placed on nozzles</th>
+                                <td>{{field_request.seal_number_placed_on_nozzle}}</td>
+                            </tr>
+                            <tr>
+                                <th>Seal Number (s) placed on
+                                underground tanks</th>
+                                <td>{{field_request.seal_placed_on}}</td>
+                            </tr> 
+                            <tr>
+                                <th>Truck No</th>
+                                <td>{{field_request.truck_number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div  class="card-body">
+
+                  
+                    <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                        <tbody>
+                            <tr>
+                                <th>Continuous illegal operation of petroleum facility</th>
+                                <td>
+                                {{field_request.illegal_operation}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal construction of petroleum facility</th>
+                                <td>{{field_request.illegal_construction}}</td>
+                            </tr>
+                            <tr>
+                                <th>Adulteration of fuel</th>
+                                <td>{{field_request.Adulteraon_fuel}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous operation without carrying out annual EIA audit</th>
+                                <td>{{field_request.continuous_operation}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction in front of congested business premises</th>
+                                <td>{{field_request.illegal_operation_business}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction under high voltage power transmission line</th>
+                                <td>{{field_request.illegal_operation_power_line}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction in a dangerous corner</th>
+                                <td>{{field_request.illegal_operation_dangerous_corner}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction in a road reserve area</th>
+                                <td>{{field_request.illegal_operation_reserve_area}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation aer breaking and/ or bypassing seals</th>
+                                <td>{{field_request.illegal_operation_bypassing_seals}}</td>
+                            </tr>
+                            <tr>
+                                <th>Already has knowledge of requirement to obtain POL & PCP</th>
+                                <td>{{field_request.already}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction which does not meet petroleum facility standards</th>
+                                <td>{{field_request.facility_standards}}</td>
+                            </tr>
+                            <tr>
+                                <th>Social aspects involving facility</th>
+                                <td>{{field_request.Social_aspects}}</td>
+                            </tr>
+                            <tr>
+                                <th>Misrepresentaon of branding by facility operator</th>
+                                <td>{{field_request.facility_operator}}</td>
+                            </tr>
+                            <tr>
+                                <th>Impersonaon by using another's license / permit</th>
+                                <td>{{field_request.Impersonaon}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and /or construction without displaying license /permit from MEMD</th>
+                                <td>{{field_request.displaying_license}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation aer having been reported to uganda police</th>
+                                <td>{{field_request.uganda_police}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and construction on inadequate land plot size (show size )</th>
+                                <td>{{field_request.land_plot_size}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and / or construction reported to uganda police under reference</th>
+                                <td>{{field_request.under_reference}}</td>
+                            </tr>
+                            <tr>
+                                <th>Continuous illegal operation and / or construction using a POL and PCP respecvely on an inadequate size of land</th>
+                                <td>{{field_request.inadequate_size_land}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5> Remarks:{{field_request.remarks}} </h5>
+                    <h5> Name of Inspector:{{field_request.name_of_inspector}} </h5>
+                    <h5> Name of Dealer / Representave:{{field_request.Name_Dealer}} </h5>
+                    <h5> 1. YOU WILL BE PROSECUTED FOR ILLEGAL CONSTRUCTION AND/ OR OPERATION<br>
+                    2. The sealed pumps /tanks/trucks should ONLY be unsealed by authority of ministry of Energy and Mineral Development.
+                    Tampering with the seal or bypassing it is prosecutabl
+                    Duplicate, white copy to MEMD, Pink copy to client </h5>
+                    {%else%}
+                    <h4>No Samples available</h4>
+                    {%endif%}
+                </div>
+                <!-- /.card-body -->               
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+<div class="modal fade" id="modal-add-farm">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Request</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ request_form|crispy }}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Confirm Submit -->
+<div class="modal fade" id="modal-confirm-submit">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Submit</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to submit this Wagesheet?
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+                <button type="submit" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- DataTables -->
+<!-- <script src="{% static 'plugins/datatables/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js'%}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js'%}"></script> -->
+
+<!-- page script -->
+<script>
+
+//   $(function () {
+//     $("#example1").DataTable({
+//       "responsive": true,
+//       "autoWidth": false,
+//     });
+//     $('#example2').DataTable({
+//       "paging": true,
+//       "lengthChange": false,
+//       "searching": false,
+//       "ordering": true,
+//       "info": true,
+//       "autoWidth": false,
+//       "responsive": true,
+//     });
+//   });
+// </script>
+{% endblock content %}
