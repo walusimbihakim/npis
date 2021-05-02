@@ -91,7 +91,7 @@ class ProductPrics(models.Model):
 
 
 class Gas(models.Model):
-    LPG_prices = models.PositiveIntegerField(max_length=150)
+    LPG_prices = models.PositiveIntegerField()
     LPG_item = models.CharField(max_length=150)
     LPG_Description = models.CharField(max_length=150)
 
@@ -120,8 +120,8 @@ class Permits(models.Model):
 class Employees(models.Model):
     id = models.AutoField(primary_key=True)
     company = models.OneToOneField(Company, on_delete=models.CASCADE)
-    female = models.PositiveIntegerField(max_length=200)
-    male = models.PositiveIntegerField(max_length=200)
+    female = models.PositiveIntegerField()
+    male = models.PositiveIntegerField()
 
     def __str__(self):
         return self.company
