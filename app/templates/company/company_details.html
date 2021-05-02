@@ -55,144 +55,168 @@ Manage Field Details
 </head>
 
 <body>
-{% block content %}
-    
-    <button class="accordion">Company Product</button>
-    <div class="panel">
-        {%if branch %}
-        <h3 class="card-title">Company {{branch.name}}</h3>
-        <p><table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
-            <tbody>
-                <tr>
-                    <th>Product Type</th>
-                    <td>
-                        {{branch.address}}
-                    </td>
-                </tr>
-               
-               
-                <tr>
-                    <th class="text-center">Actions</th>
-                    
-                        Details
+{% block content %}  
+<div class="container-fluid">
+    <!-- ./row -->
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-12">  
+            <div class="card">                
+                <div class="card-body">
+                    <a class="btn btn-primary" href="">
+                        print
                     </a>
-                </tr>
-                <tr>
-                    <th class="text-center">#</th>
-                  
-                        <i class="fa fa-edit"></i>
-                    </a>
-                </tr>
+                <h3 class="text-center">{{company}}: <b>{{company.registration_no}}</b></h3>
                 
-                
-            </tbody>
-        </table>
-        {%else%}
-        <h4>No Product Available</h4>
-        {%endif%}
-    </p>
-    </div>
+                    <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                        <tbody>
+                            <tr>
+                                <th >Company</th>
+                                <td >
+                                    {{company.name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contact Person</th>
+                                <td>{{company.contact_person}}</td>
+                            </tr>
+                            <tr>
+                                <th>Contact</th>
+                                <td>{{company.contact_no}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{company.email}}</td>
+                            </tr> 
+                            <tr>
+                                <th>Address</th>
+                                <td>{{company.address}}</td>
+                            </tr> 
+                            <tr>
+                                <th>Region</th>
+                                <td>{{company.region}}</td>
+                            </tr>   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <button class="accordion">Product</button>
-    <div class="panel">
-        {%if product %}
-        <h3 class="card-title">product {{product.product_type}}</h3>
-        <p><table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
-            <tbody>
-                <tr>
-                    <th>Product Type</th>
-                    <td>
-                        {{product.tank_details}}
-                    </td>
-                </tr>
-        
-        
-                <tr>
-                    <th class="text-center">Actions</th>
-        
-                    Details
-                    </a>
-                </tr>
-                <tr>
-                    <th class="text-center">#</th>
-        
-                    <i class="fa fa-edit"></i>
-                    </a>
-                </tr>
-        
-        
-            </tbody>
-        </table>
-        {%else%}
-        <h4>No Product Available</h4>
-        {%endif%}</p>
-    </div>
+            <div class="card">                
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-5 col-sm-3">
+                        <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="true">Branches</a>
+                        <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Products</a>
+                        <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Permits</a>
+                        <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Employees</a>
+                        <a class="nav-link" id="vert-tabs-attachments-tab" data-toggle="pill" href="#vert-tabs-attachments" role="tab" aria-controls="vert-tabs-attachments" aria-selected="false">Attachments</a>
+                        </div>
+                    </div>
+                    <div class="col-7 col-sm-9">
+                        <div class="tab-content" id="vert-tabs-tabContent">
+                        <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
+                            {%if branches %}
+                                <button class="btn btn-primary float-right">Add New</button><br><br>
+                                    <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                                        <tbody>
+                                            <tr>
+                                                <th class="text-center">Name</th> 
+                                                <th class="text-center">Address</th>
+                                                <th class="text-center">#</th>
 
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-    </div>
+                                            </tr>
+                                            {% for branch in branches %}
+                                            <tr>
+                                                <td class="text-center">
+                                                    {{branch.name}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{branch.address}}
+                                                </td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-edit"></i>|
+                                                    <i class="fa fa-trash"></i>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}   
+                                        </tbody>
+                                    </table>
+                                {%else%}
+                                    <h4>No Product Available</h4>
+                                {%endif%}</p>
+                        </div>
+                        <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
+                            {%if products %}
+                                <button class="btn btn-primary float-right">Add New</button><br>
+                                <table id="dataTables-example" class="table table-table-striped" data-page-length='100'>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">Type</th> 
+                                            <th class="text-center">Tank Details</th>
+                                            <th class="text-center">Stock</th>
+                                            <th class="text-center">#</th>
 
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
+                                        </tr>
+                                        {% for product in products %}
+                                        <tr>
+                                            <td class="text-center">
+                                                {{product.product_type}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{product.tank_details}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{product.stock}}
+                                            </td>
+                                            <td class="text-center">
+                                                <i class="fa fa-edit"></i>|
+                                                <i class="fa fa-trash"></i>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}   
+                                    </tbody>
+                                </table>
+                                {%else%}
+                                <h4>No Product Available</h4>
+                                {%endif%}
+                        </div>
+                        <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
+                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+                        </div>
+                        <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
+                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                        </div>
+                        <div class="tab-pane fade" id="vert-tabs-attachments" role="tabpanel" aria-labelledby="vert-tabs-attachments-tab">
+                            Attachments    
+                        </div>
+                        </div>
+                    </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 {% endblock content %}
 </body>
 

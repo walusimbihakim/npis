@@ -30,7 +30,7 @@ def manage_company(request):
 def manage_product(request):
 
     product_form = ProductForm()
-    products = get_products()
+    products = get_company_products()
 
     if request.method == "POST":
         product_form = ProductForm(request.POST, request.FILES)
@@ -71,13 +71,13 @@ def edit_company_view(request, id):
 def company_detail_view(request, id):
     company = get_company(id)
     branch = get_company_branches(company)
-    product = get_company_products(company)
+    company_products = get_company_products(company)
 
 
     context = {
-
-        "branch": branch,
-        "product": product
+        "company": company,
+        "branches": branch,
+        "products": company_products
     }
     return render(request, "company/company_details.html", context)
 

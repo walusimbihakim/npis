@@ -29,8 +29,8 @@ enforcement_urls = [
          enforcement_views.print_enforcement_field, name='field_print_enf'),
 ]
 company_urls = [
-    path('Detail_company/<int:id>/',
-         company_views.company_detail_view, name='Detail_company'),
+    path('company_detail/<int:id>/',
+         company_views.company_detail_view, name='company_detail'),
     path('manage_company/', company_views.manage_company, name='register_company'),
     path('manage_product/', company_views.manage_product, name='register_product'),
     path('delete_company_view/<int:id>/', company_views.delete_company_view, name='delete_company_view'),
