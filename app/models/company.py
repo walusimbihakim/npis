@@ -12,6 +12,7 @@ class Company(models.Model):
 
     ]
     id = models.AutoField(primary_key=True)
+    facility_type = models.CharField(max_length=50,choices=FACILTY_TYPE_CHOICES)
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=150)
     registration_no = models.CharField(max_length=50)
@@ -77,6 +78,7 @@ class Products(models.Model):
         max_length=200, choices=PRODUCT_TYPE_CHOICES)
     tank_details = models.CharField(max_length=200)
     stock = models.CharField(max_length=200)
+    product_prices = models.CharField(max_length=150)
     
 
     def __str__(self):
@@ -127,7 +129,7 @@ class Employees(models.Model):
         return self.company
 
 
-class Supplers(models.Model):
+class Suppliers(models.Model):
     
     id = models.AutoField(primary_key=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)

@@ -5,7 +5,10 @@ from django.contrib import messages
 from app.forms.company_form import CompanyForm,ProductForm
 from app.selectors.company_selector import (get_companys,
 get_company,get_product,get_company_products
-,get_company_branches)
+,get_company_branches
+,get_company_permits
+,get_company_employee,get_company_gas,
+get_company_supliers,get_company_attachment)
 
 def manage_company(request):
     
@@ -72,12 +75,19 @@ def company_detail_view(request, id):
     company = get_company(id)
     branch = get_company_branches(company)
     company_products = get_company_products(company)
+    company_permit = get_company_permits(company)
+    company_employee = get_company_employee(company)
+    company_attachment = get_company_attachment(company)
+
 
 
     context = {
         "company": company,
         "branches": branch,
-        "products": company_products
+        "products": company_products,
+        "permit": company_permit,
+        "employee": company_employee,
+        "attachment": company_attachment
     }
     return render(request, "company/company_details.html", context)
 
