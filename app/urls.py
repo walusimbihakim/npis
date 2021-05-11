@@ -21,6 +21,8 @@ print_sample_urls = [
 
 enforcement_urls = [
     path('manage_enforceement/', enforcement_views.manage_enforcement_field, name='register_enforcement'),
+    path('manage_inspection/', enforcement_views.manage_inspection_field,
+         name='register_inspection'),
     path('edit_field_view/<int:field_id>/',enforcement_views.edit_field_view, name='edit_field_view'),
     path('Detail_field/<int:field_id>/',
          enforcement_views.request_details_field_view, name='Detail_field'),
@@ -29,12 +31,26 @@ enforcement_urls = [
          enforcement_views.print_enforcement_field, name='field_print_enf'),
 ]
 company_urls = [
-    path('company_detail/<int:id>/',
+    path('company_detail/<int:company_id>/',
          company_views.company_detail_view, name='company_detail'),
+    path('product_detail/<int:company_id>/',
+         company_views.manage_product, name='manage_company_product'),
+    path('branch_detail/<int:company_id>/',
+         company_views.manage_branch, name='manage_company_branch'),
+    path('permit_detail/<int:company_id>/',
+         company_views.manage_permit, name='manage_company_permit'),
+    path('employee_detail/<int:company_id>/',
+         company_views.manage_employee, name='manage_company_employee'),
+    path('supplier_detail/<int:company_id>/',
+         company_views.manage_supplier, name='manage_company_supplier'),
+    path('gas_detail/<int:company_id>/',
+         company_views.manage_gas, name='manage_company_gas'),
     path('manage_company/', company_views.manage_company, name='register_company'),
     path('manage_product/', company_views.manage_product, name='register_product'),
-    path('delete_company_view/<int:id>/', company_views.delete_company_view, name='delete_company_view'),
-    path('edit_company_view/<int:id>/', company_views.edit_company_view, name='edit_company_view'),
+    path('delete_company_view/<int:company_id>/',
+         company_views.delete_company_view, name='delete_company_view'),
+    path('edit_company_view/<int:company_id>/',
+         company_views.edit_company_view, name='edit_company_view'),
 ]
 
 sample_urls = [

@@ -3,7 +3,17 @@ from django.forms import ModelForm, Textarea, HiddenInput, DateInput
 from django import forms
 
 
-from app.models.enforcement_field import Field_enforcement
+from app.models.enforcement_field import Field_enforcement,Inspection
+
+class InspectionForm(ModelForm):
+    class Meta:
+        model = Inspection
+        
+        fields = fields = '__all__'
+     
+    def __init__(self, *args, **kwargs):
+        super(InspectionForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
 
 
 class EnforcementFieldForm(ModelForm):

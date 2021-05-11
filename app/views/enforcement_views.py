@@ -6,9 +6,36 @@ from django.http import HttpResponse
 import datetime
 
 from app.utils import render_to_pdf
-from app.forms.enforcement_field_form import EnforcementFieldForm
-from app.selectors.enforcement_selector import get_enforcement_field, get_enforcement_fields,generate_auto_serialnumber
+from app.forms.enforcement_field_form import EnforcementFieldForm,InspectionForm
+from app.selectors.enforcement_selector import (get_enforcement_field,
+ get_enforcement_fields,generate_auto_serialnumber,
+ 
+get_inspection_field,get_inspection_fields,
+generate_auto_checklist)
 
+def manage_inspection_field(request):
+    auto_checklist=generate_auto_checklist()
+    year = datetime.datetime.today().year
+    request_checklist_number = f"MEMD/INSP/CL/{year}/{auto_checklist}"
+    inspection_field_form = InspectionForm(
+        initial={"checklist No": request_checklist_number})
+    inspection_field_forms = get_inspection_fields()
+
+    if request.method == "POST":
+        inspection_field_form = InspectionForm(request.POST, request.FILES)
+        if inspection_field_form.is_valid():
+            inspection_field_form.save()
+            messages.success(request, 'inspection Record saved Successfully!')
+
+        else:
+            messages.warning(request, 'Operation Not Successfull')
+
+
+    context = {
+        "inspection_field_form": inspection_field_form,
+        "inspection_field_forms": inspection_field_forms
+    }
+    return render(request, "enforcement/inspection_field.html", context)
 
 def manage_enforcement_field(request):
 
@@ -52,6 +79,7 @@ def edit_field_view(request, field_id):
             messages.success(request, 'Changes saved Successfully!')
         else:
             messages.warning(request, 'Operation Not Successfull')
+        return HttpResponseRedirect(reverse(manage_enforcement_field))
 
     context = {
         "enforcement_field_form": enforcement_field_form,

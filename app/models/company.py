@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+import datetime
+
 
 # Create your models here.
 
@@ -19,8 +21,8 @@ class Company(models.Model):
     contact_person = models.CharField(max_length=50)
     contact_no = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
-    address = models.TextField()
-    region = models.CharField(max_length=50)
+    address = models.CharField(max_length=50)
+    region = models.CharField(max_length=200)
     district = models.CharField(max_length=50)
     county = models.CharField(max_length=50)
     sub_county = models.CharField(max_length=50)
@@ -93,6 +95,7 @@ class ProductPrics(models.Model):
 
 
 class Gas(models.Model):
+    company = models.OneToOneField(Company, on_delete=models.CASCADE)
     LPG_prices = models.PositiveIntegerField()
     LPG_item = models.CharField(max_length=150)
     LPG_Description = models.CharField(max_length=150)

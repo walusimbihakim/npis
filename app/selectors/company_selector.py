@@ -4,13 +4,16 @@ Branches,Permits,Employees,Suppliers,Gas,Attachments)
 def get_companys():
     return Company.objects.all()
 
-def get_company(id):
-    return Company.objects.get(pk=id)
+def get_company(company_id):
+    return Company.objects.get(pk=company_id)
 
 
 def get_company_products(company):
     return Products.objects.filter(company=company)
 
+
+# def get_products():
+#     return Products.objects.all()
 
 def get_company_branches(company):
     return Branches.objects.filter(company=company)

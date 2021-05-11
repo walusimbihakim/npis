@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {%block page_title%}
-Manage Company
+Manage Field Inspection
 {% endblock%}
 {% block right_button%}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-farm">
@@ -32,10 +32,10 @@ Manage Company
     
                             <th class="text-center">ID</th>
                             <th class="text-center">Name</th>
-                            <th class="text-center">reg Number</th>
-                            <th class="text-center">Contact Person</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Actions</th>
+                            <th class="text-center">District</th>
+                            <th class="text-center">Contact Number</th>
+                            <th class="text-center">Village</th>
+                            <!-- <th class="text-center">Actions</th> -->
                             <th class="text-center">#</th>
                         </tr>
                         </thead>
@@ -43,13 +43,16 @@ Manage Company
                         {% for companys in companys %}
                         <tr data-id={{companys.id}}>
                             <td class="text-center">{{companys.id}}</td>
-                            <td class="text-center">{{companys.code}} - <br>({{companys.name}})</td>
-                            <td class="text-center">{{companys.registration_no}}</td>
-                            <td class="text-center">{{companys.contact_person}} <br> ({{companys.contact_no}})</td>
-                            <td class="text-center">{{companys.email}}</td>
+                            <td class="text-center">({{companys.name}})</td>
+                            <td class="text-center">{{companys.district}}</td>
+                            <td class="text-center">({{companys.contact_no}})</td>
+                            <td class="text-center">{{companys.village}}</td>
                              <td>
                                 <a class="btn btn-primary" href="{% url 'company_detail' companys.id %}">
                                     Details
+                                </a>|
+                                <a class="btn btn-primary" href="{% url 'register_inspection' %}">
+                                    Inspection  
                                 </a>
                              </td>
                             <td>
@@ -129,6 +132,8 @@ Manage Company
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
 <!-- /.modal -->
 
 <!-- DataTables -->
