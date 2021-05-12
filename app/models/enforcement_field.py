@@ -4,6 +4,7 @@ from app.models.company import Company
 
 
 class Field_enforcement(models.Model):
+    
     id = models.AutoField(primary_key=True)
     status = [
         ('Yes', 'Yes'),
@@ -17,7 +18,7 @@ class Field_enforcement(models.Model):
     category = models.CharField(max_length=200)
     district = models.CharField(max_length=200)
     seal_number_placed_on_nozzle = models.CharField(max_length=200)
-    # serial_number = models.CharField(max_length=200,unique=True)
+    serial_number = models.CharField(max_length=200,unique=True)
     contact = models.CharField(max_length= 200)
     truck_number = models.CharField(max_length=200,null=True,blank=True)
     subcounty = models.CharField(
@@ -89,11 +90,9 @@ class Field_enforcement(models.Model):
     
 
 class Inspection(models.Model):
-   
-    assessment_certificate = models.CharField(max_length=200)
+    
     part1 = models.CharField(
-        verbose_name="Possession of certificate of approval of Environment Impact Assessment Certificate"
-        ,max_length=200)
+        verbose_name="Possession of certificate of approval of Environment Impact Assessment Certificate", max_length=200)
     part2 = models.CharField(
         verbose_name="Possession of a well-designed interceptor on site to control water pollution from accidental spills that could be washed off by storm", max_length=200)
     part3 = models.CharField(
@@ -174,20 +173,24 @@ class Inspection(models.Model):
         verbose_name="Is Information required by the NPIS availed regularly and reconcile with the information with the Ministry", max_length=200)
     id = models.AutoField(primary_key=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    date = models.DateField()
+    checklist_No = models.CharField(max_length=200)
     partcular = models.TextField()
     status = models.BooleanField(default=True)
     remarks = models.TextField(null=True)
     other_details = models.TextField(null=True)
-    waste = models.CharField(verbose_name="Procedure for Handling Conterminated Wastes and Product",max_length=200)
+    waste = models.CharField(
+        verbose_name="Procedure for Handling Conterminated Wastes and Product", max_length=200)
 
     def __str__(self):
-        return self.partcular
+        return self.company
+   
+    assessment_certificate = models.CharField(max_length=200)
+    
+
+
 
     
-    
-    
-    
-    
-    
+        
 
 
