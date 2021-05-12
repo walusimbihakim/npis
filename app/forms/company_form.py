@@ -58,7 +58,7 @@ class PermitForm(ModelForm):
     class Meta:
         model = Permits
 
-        fields = fields = '__all__'
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(PermitForm, self).__init__(*args, **kwargs)
@@ -70,7 +70,7 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employees
 
-        fields = fields = '__all__'
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(EmployeeForm, self).__init__(*args, **kwargs)
@@ -82,7 +82,7 @@ class SuplierForm(ModelForm):
     class Meta:
         model = Suppliers
 
-        fields = fields = '__all__'
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(SuplierForm, self).__init__(*args, **kwargs)

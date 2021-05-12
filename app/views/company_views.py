@@ -1,4 +1,3 @@
-# from npis.app.forms.company_form import SuplierForm
 from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages

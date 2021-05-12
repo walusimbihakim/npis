@@ -5,6 +5,7 @@ from  app.views import sample_views as sample_views
 from  app.views import dashboard_views as dashboard_views
 from  app.views import company_views as company_views
 from app.views import enforcement_views as enforcement_views
+from app.views import inspection_views as inspection_views
 
 
 
@@ -20,9 +21,7 @@ print_sample_urls = [
 ]
 
 enforcement_urls = [
-    path('manage_enforceement/', enforcement_views.manage_enforcement_field, name='register_enforcement'),
-    path('manage_inspection/', enforcement_views.manage_inspection_field,
-         name='register_inspection'),
+    path('manage_enforceement/', enforcement_views.manage_enforcement_field, name='register_enforcement'),    
     path('edit_field_view/<int:field_id>/',enforcement_views.edit_field_view, name='edit_field_view'),
     path('Detail_field/<int:field_id>/',
          enforcement_views.request_details_field_view, name='Detail_field'),
@@ -30,6 +29,12 @@ enforcement_urls = [
     path('field_print/<int:field_id>',
          enforcement_views.print_enforcement_field, name='field_print_enf'),
 ]
+
+inspection_urls = [
+    path('company_inspection/<int:company_id>/', inspection_views.manage_company_inspection,
+         name='company_inspection'),
+]
+
 company_urls = [
     path('company_detail/<int:company_id>/',
          company_views.company_detail_view, name='company_detail'),
@@ -64,4 +69,4 @@ sample_urls = [
 ]
 
 urlpatterns = [
-] + dashboard_urls + company_urls + sample_urls+print_sample_urls+enforcement_urls
+] + dashboard_urls + company_urls + sample_urls+print_sample_urls+enforcement_urls + inspection_urls
