@@ -17,11 +17,19 @@ class CompanyInspection(models.Model):
     inspector = models.CharField(max_length=50, verbose_name="Inspected By")
     recommendation = models.TextField()
 
+    def __str__(self):
+        return f'{self.company} - {self.inspection_no}'
+
 
 class InspectionCheckList(models.Model):
-    company_inspection = models.ForeignKey(
+    inspection = models.ForeignKey(
         CompanyInspection, on_delete=models.RESTRICT)
-    checkList = models.ForeignKey(
+    checklist = models.ForeignKey(
         CheckList, verbose_name="Particular", on_delete=models.RESTRICT)
-    status = models.BooleanField()
-    remarks = models.TextField()
+    status = models.BooleanField(default=False)
+    remarks = models.TextField(null=True)
+    is_responded_to = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.checklist}'
+    

@@ -47,7 +47,6 @@ DJANGO_APPS = [
 PROJECT_APP = [
     'crispy_forms',
     'app',
-    'bootstrap_datepicker_plus',
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APP
 

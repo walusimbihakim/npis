@@ -33,6 +33,8 @@ enforcement_urls = [
 inspection_urls = [
     path('company_inspection/<int:company_id>/', inspection_views.manage_company_inspection,
          name='company_inspection'),
+     path('inspection_checklist/<int:inspection_id>/', inspection_views.manage_inspection_checklist,
+         name='inspection_checklist'),
 ]
 
 company_urls = [

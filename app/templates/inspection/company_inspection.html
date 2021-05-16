@@ -4,7 +4,7 @@
 {%load humanize%}
 
 {%block page_title%}
-Manage Field Details
+Manage Inspections
 {% endblock%}
 
 {% block right_button%}
@@ -43,7 +43,7 @@ Manage Field Details
                                     <td>{{inspection.inspector}}</td>
                                     <td>{{inspection.recommendation}}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="">
+                                        <a class="btn btn-primary" href="{% url 'inspection_checklist' inspection.id %}">
                                             Check List
                                         </a>
                                     </td>
