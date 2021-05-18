@@ -24,12 +24,14 @@ class CompanyInspectionForm(ModelForm):
         fields = '__all__'
 
         widgets = {
-            "inspection_date": DateInput(attrs={'type':'date'})
+            "inspection_date": DateInput(attrs={'type':'date'}),
         }
 
     def __init__(self, *args, **kwargs):
         super(CompanyInspectionForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.fields['company'].widget=HiddenInput()
+        self.fields['inspection_no'].widget.attrs['readonly'] = True
 
 
 class InspectionCheckListForm(ModelForm):

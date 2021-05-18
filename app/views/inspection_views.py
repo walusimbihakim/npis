@@ -11,13 +11,14 @@ from app.selectors.inspection_selectors import get_company_inspections, generate
 
 
 def manage_company_inspection(request, company_id):
+    company = get_company(company_id)
     auto_checklist = generate_auto_checklist()
     year = datetime.datetime.today().year
     inspection_no = f"MEMD/INSP/CL/{year}/{auto_checklist}"
     
 
     company_inspection_form = CompanyInspectionForm(
-        initial={"inspection_no": inspection_no})
+        initial={"inspection_no": inspection_no,"company":company})
 
     if request.method == "POST":
         company_inspection_form = CompanyInspectionForm(request.POST, request.FILES)
@@ -30,7 +31,7 @@ def manage_company_inspection(request, company_id):
         else:
             messages.error(request, 'Failed to save data, chck your input and try again')
     
-    company = get_company(company_id)
+    
     company_inspections = get_company_inspections(company)
 
     context = {

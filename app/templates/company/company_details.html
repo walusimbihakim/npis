@@ -314,7 +314,7 @@ Manage Field Details
                                 </tbody>
                             </table>
                             {%else%}
-                            <h4>No Permit Available</h4>
+                            <h4>No Employee Available</h4>
                             {%endif%}
                         </div>
                         <div class="tab-pane fade" id="vert-tabs-settingss" role="tabpanel" aria-labelledby="vert-tabs-settings-tabs">
@@ -355,7 +355,7 @@ Manage Field Details
                             {%endif%}
                         </div>
                     <div class="tab-pane fade" id="vert-tabs-attachments" role="tabpanel" aria-labelledby="vert-tabs-attachments-tab">
-                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-add-suplier">
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-add-attachment">
                             Add New Attachment
                         </button>
                         {%if attachment %}
@@ -396,95 +396,7 @@ Manage Field Details
                     
                   
                     </div>  
-                    <div class="card-body">
-                        <!-- <h4>Checklist:</h4>
-                        <a class="btn btn-primary" href="{% url 'register_inspection' %}">
-                            Detailszzzzz
-                        </a> -->
-                        <table>
-                            <tr>
-                                <td>
-<h5>Checklist No:&nbsp;</h5>
-                                </td>
-                                                <td>
-                                                    <h5>Date</h5>
-                                                </td>
-                            </tr>
-                        </table>
-                       
-                        <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill"
-                                    href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home"
-                                    aria-selected="true">Level 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill"
-                                    href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile"
-                                    aria-selected="false">Level 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill"
-                                    href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages"
-                                    aria-selected="false">Level 3</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill"
-                                    href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings"
-                                    aria-selected="false">Level 4</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="custom-content-below-tabContent">
-                            <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel"
-                                aria-labelledby="custom-content-below-home-tab">
-                                
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit
-                                amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor
-                                felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam
-                                id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id
-                                orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at
-                                commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis.
-                                In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at,
-                                semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                            </div>
-                            <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel"
-                                aria-labelledby="custom-content-below-profile-tab">
-                                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor,
-                                et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum
-                                primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus
-                                interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit
-                                amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                            </div>
-                            <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel"
-                                aria-labelledby="custom-content-below-messages-tab">
-                                Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi
-                                placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla.
-                                Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a,
-                                malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus
-                                efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae
-                                gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus
-                                tincidunt eleifend ac ornare magna.
-                            </div>
-                            <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel"
-                                aria-labelledby="custom-content-below-settings-tab">
-                                Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare
-                                sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie
-                                tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra.
-                                Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim.
-                                In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                            </div>
-                        </div>
-                        <div class="tab-custom-content">
-                            <p class="lead mb-0">Checklist</p>
-                        </div>
-                        
-                        
-                        
-                        
-                           
-                          
-                        </div>
-                    </div>
+                   
                 </div>
                 
             </div>
@@ -655,6 +567,32 @@ Manage Field Details
     <!-- /.modal-dialog -->
 </div>
 <!-- end model company gas -->
+<!-- model company attachment -->
+<div class="modal fade" id="modal-add-attachment">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Attachment</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" action="{% url 'manage_company_attachment' company.id %}">
+                    {% csrf_token %}
+                    {{ attachment_form|crispy }}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- end model company attachment -->
 <!-- /.container-fluid -->
 <script>
     var acc = document.getElementsByClassName("accordion");

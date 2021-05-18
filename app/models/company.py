@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+
 import datetime
 
 
@@ -150,7 +151,7 @@ class Attachments(models.Model):
     attachment_file = models.FileField(upload_to='attachments')
 
     def __str__(self):
-        return self.company
+        return f'{self.company} - {self.name}'
 
 
 class Branches(models.Model):

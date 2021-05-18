@@ -1,4 +1,4 @@
-from app.models.enforcement_field import Field_enforcement,Inspection
+from app.models.enforcement_field import Field_enforcement
 
 
 def get_enforcement_fields():
