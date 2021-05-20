@@ -1,7 +1,12 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import AbstractUser
 from app.models.company import Company
 
+
+# class User(AbstractUser):
+#     is_enforce = models.BooleanField(default=False)
+#     is_field = models.BooleanField(default=False)
 
 class Field_enforcement(models.Model):
     

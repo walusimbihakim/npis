@@ -143,4 +143,4 @@ FILE_ROOT = os.path.join(BASE_DIR, 'attachments')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-AUTH_USER_MODEL = 'app.User'
+# AUTH_USER_MODEL = 'app.enforcement_field'

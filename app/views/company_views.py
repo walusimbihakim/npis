@@ -5,6 +5,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+from app.decorators.decorator import field_required
+
 from app.forms.company_form import (CompanyForm, ProductForm,
  BranchForm,PermitForm,EmployeeForm,SuplierForm,GasForm,AttachmentForm
 )
@@ -17,7 +19,7 @@ get_company_supliers,get_company_attachment)
 
 
 # method_decorator(login_required,name='dispatch')
-@login_required(login_url="login")
+# @login_required(login_url="login")
 @staff_member_required(login_url="login")
 def manage_company(request):
     
