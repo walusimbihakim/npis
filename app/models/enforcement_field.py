@@ -1,7 +1,12 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import AbstractUser
 from app.models.company import Company
 
+
+# class User(AbstractUser):
+#     is_enforce = models.BooleanField(default=False)
+#     is_field = models.BooleanField(default=False)
 
 class Field_enforcement(models.Model):
     
@@ -12,6 +17,78 @@ class Field_enforcement(models.Model):
         
 
     ]
+    serial_number = models.CharField(max_length=200)
+    date = models.DateField(default='2021-05-12')
+    company_name = models.CharField(max_length=200)
+    category = models.CharField(max_length=200)
+    district = models.CharField(max_length=200)
+    seal_number_placed_on_nozzle = models.CharField(max_length=200)
+    serial_number = models.CharField(max_length=200,unique=True)
+    contact = models.CharField(max_length= 200)
+    truck_number = models.CharField(max_length=200,null=True,blank=True)
+    subcounty = models.CharField(
+        verbose_name="Subcounty/Divison/Municipality", max_length=200)
+    seal_placed_on = models.CharField(verbose_name="Seal Number(s) placed on underground tanks ",
+     max_length=200, null=True, blank=True)
+    illegal_operation = models.CharField(
+        verbose_name="Continuous illegal operation of petroleum facility", max_length=200, choices=status,default="Yes")
+    illegal_construction = models.CharField(
+        verbose_name="Continuous illegal construction of petroleum facility", max_length=200, choices=status, default="Yes")
+    Adulteraon_fuel = models.CharField(
+        verbose_name="Adulteraon of fuel", max_length=200, choices=status, default="Yes")
+    continuous_operation = models.CharField(
+        verbose_name="Continuous operation without carrying out annual EIA audit", max_length=200, choices=status, default="Yes")
+    illegal_operation_business = models.CharField(
+        verbose_name="Continuous illegal operation and construction in front of congested business premises ",
+        max_length=200, choices=status, default="Yes")
+    illegal_operation_power_line = models.CharField(
+        verbose_name="Continuous illegal operation and construction under high voltage power transmission line  ",
+        max_length=200, choices=status, default="Yes")
+    illegal_operation_dangerous_corner = models.CharField(
+        verbose_name="Continuous illegal operation and construction in a dangerous corner  ",
+        max_length=200, choices=status, default="Yes")
+    illegal_operation_reserve_area = models.CharField(
+        verbose_name="Continuous illegal operation and construction in a road reserve area  ",
+        max_length=200, choices=status, default="Yes")
+    illegal_operation_bypassing_seals = models.CharField(
+        verbose_name="Continuous illegal operation aer breaking and/ or bypassing seals  ",
+        max_length=200, choices=status, default="Yes")
+    already = models.CharField(
+        verbose_name="Already has knowledge of requirement to obtain POL & PCP  ",
+        max_length=200, choices=status, default="Yes")
+    facility_standards = models.CharField(
+        verbose_name="Continuous illegal operation and construction which does not meet petroleum facility standards  ",
+        max_length=200, choices=status, default="Yes")
+    Social_aspects = models.CharField(
+        verbose_name="Social aspects involving facility ",
+        max_length=200, choices=status, default="Yes")
+    facility_operator = models.CharField(
+        verbose_name="Misrepresentaon of branding by facility operator ",
+        max_length=200, choices=status, default="Yes")
+    Impersonaon = models.CharField(
+        verbose_name="Impersonaon by using another's license / permit  ",
+        max_length=200, choices=status, default="Yes")
+    displaying_license = models.CharField(
+        verbose_name="Continuous illegal operation and /or construction without displaying license /permit from MEMD  ",
+        max_length=200, choices=status, default="Yes")
+    uganda_police = models.CharField(
+        verbose_name="Continuous illegal operation aer having been reported to uganda police  ",
+        max_length=200, choices=status, default="Yes")
+    land_plot_size = models.CharField(
+        verbose_name="Continuous illegal operation and construction on inadequate land plot size (show size )",
+        max_length=200, choices=status, default="Yes")
+    under_reference = models.CharField(
+        verbose_name="Continuous illegal operation and / or construction reported to uganda police under reference",
+        max_length=200, choices=status, default="Yes")
+    inadequate_size_land = models.CharField(
+        verbose_name="Continuous illegal operation and / or construction using a POL and PCP respecvely on an inadequate size of land",
+        max_length=200, choices=status, default="Yes")
+    others = models.CharField(max_length=200, choices=status, default="Yes")
+    remarks = models.TextField(max_length=200)
+    name_of_inspector = models.CharField(max_length=200)
+    Name_Dealer = models.CharField(
+        verbose_name="Name of Dealer / Representave",
+        max_length=200)
     # serial_number = models.CharField(max_length=200)
     # date = models.DateField()
     # company_name = models.CharField(max_length=200)
@@ -89,7 +166,7 @@ class Field_enforcement(models.Model):
     #     return self.company_name
     
 
-class Inspection(models.Model):
+# class Inspection(models.Model):
     
     part1 = models.CharField(
         verbose_name="Possession of certificate of approval of Environment Impact Assessment Certificate", max_length=200)

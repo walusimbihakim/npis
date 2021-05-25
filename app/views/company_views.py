@@ -1,9 +1,14 @@
 from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
+from app.decorators.decorator import field_required
 
 from app.forms.company_form import (CompanyForm, ProductForm,
- BranchForm,PermitForm,EmployeeForm,SuplierForm,GasForm
+ BranchForm,PermitForm,EmployeeForm,SuplierForm,GasForm,AttachmentForm
 )
 from app.selectors.company_selector import (get_companys,
 get_company,get_product,get_company_products
@@ -12,6 +17,10 @@ get_company,get_product,get_company_products
 ,get_company_employee,get_company_gas,
 get_company_supliers,get_company_attachment)
 
+
+# method_decorator(login_required,name='dispatch')
+# @login_required(login_url="login")
+@staff_member_required(login_url="login")
 def manage_company(request):
     
     company_form = CompanyForm()
@@ -30,6 +39,10 @@ def manage_company(request):
         "companys": companys
     }
     return render(request, "company/company_registration.html", context)
+
+    
+    
+   
 
 
 def manage_product(request,company_id):
@@ -109,6 +122,19 @@ def manage_gas(request, company_id):
             messages.warning(request, 'Operation Not Successfull')
     return HttpResponseRedirect(reverse(company_detail_view, args=[company_id]))
 
+
+def manage_attachment(request, company_id):
+
+    if request.method == "POST":
+        attachment_form = AttachmentForm(request.POST, request.FILES)
+
+        if attachment_form.is_valid():
+           attachment_form.save()
+           messages.success(request, 'Attachment saved Successfully!')
+        else:
+            messages.error(request, 'Operation Not Successfull')
+    return HttpResponseRedirect(reverse(company_detail_view, args=[company_id]))
+
     
 
 def edit_company_view(request, company_id):
@@ -151,6 +177,7 @@ def company_detail_view(request, company_id):
     employee_form = EmployeeForm(initial={"company": company})
     supplier_form = SuplierForm(initial={"company": company})
     gas_form = GasForm(initial={"company": company})
+    attachment_form = AttachmentForm(initial={"company": company})
     
 
     context = {
@@ -167,7 +194,8 @@ def company_detail_view(request, company_id):
         "permit_form": permit_form,
         "employee_form": employee_form,
         "supplier_form": supplier_form,
-        "gas_form": gas_form
+        "gas_form": gas_form,
+        "attachment_form": attachment_form
     }
     return render(request, "company/company_details.html", context)
 

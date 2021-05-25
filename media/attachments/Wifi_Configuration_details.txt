@@ -1,0 +1,7 @@
+Wireless Configuration
+
+192.168.10.1
+login Details: admin psword: UPC
+Wifi - No_internet_Network
+wifikey: 00112233
+

@@ -139,3 +139,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_FILE = '/attachments/'
 FILE_ROOT = os.path.join(BASE_DIR, 'attachments')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# AUTH_USER_MODEL = 'app.enforcement_field'

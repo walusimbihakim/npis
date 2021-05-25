@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from  app.views import sample_views as sample_views
 from  app.views import dashboard_views as dashboard_views
@@ -52,6 +54,8 @@ company_urls = [
          company_views.manage_supplier, name='manage_company_supplier'),
     path('gas_detail/<int:company_id>/',
          company_views.manage_gas, name='manage_company_gas'),
+    path('attachment_detail/<int:company_id>/',
+         company_views.manage_attachment, name='manage_company_attachment'),
     path('manage_company/', company_views.manage_company, name='register_company'),
     path('manage_product/', company_views.manage_product, name='register_product'),
     path('delete_company_view/<int:company_id>/',

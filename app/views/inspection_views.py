@@ -15,10 +15,11 @@ def manage_company_inspection(request, company_id):
     auto_checklist = inspection_selectors.generate_auto_checklist()
     year = datetime.datetime.today().year
     inspection_no = f"MEMD/INSP/CL/{year}/{auto_checklist}"
-    
+
+    company = get_company(company_id)
 
     company_inspection_form = CompanyInspectionForm(
-        initial={"inspection_no": inspection_no})
+        initial={"inspection_no": inspection_no,"company":company})
 
     if request.method == "POST":
         company_inspection_form = CompanyInspectionForm(request.POST, request.FILES)
